@@ -1,0 +1,22 @@
+import React, { useState, useEffect } from 'react';
+
+const HourTimeline = () => {
+  const [currentHour, setCurrentHour] = useState(new Date().getHours());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHour(new Date().getHours());
+    }, 1000); // Update every second
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div>
+      <h2>Current Hour:</h2>
+      <p>{currentHour}</p>
+    </div>
+  );
+};
+
+export default HourTimeline;
